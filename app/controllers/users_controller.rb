@@ -15,7 +15,12 @@ class UsersController < ApplicationController
     flash[:success] = "User destroyed."
     redirect_to users_url
   end
-    
+  
+  def show
+    @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
+  end
+  
   private
   
     def admin_user
