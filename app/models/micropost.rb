@@ -7,6 +7,8 @@ class Micropost < ActiveRecord::Base
    # ファイル用の属性を追加するhas_attached_fileメソッド
   has_attached_file :image, styles: { medium: "200x150>", thumb: "50x50>" }
 
+  validates_with AttachmentSizeValidator, attributes: :image, less_than: 1.megabytes
+  #validates_attachment_size attributes: :image, :less_than => 5.megabytes
   #  画像の拡張子を限定するためのvalidatorを定義
   validates_attachment_content_type :image, :content_type => %w(image/jpeg image/jpg image/png image/gif)
 

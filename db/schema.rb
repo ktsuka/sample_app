@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180724144242) do
+ActiveRecord::Schema.define(version: 20180730140833) do
+
+  create_table "contacts", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "age"
+  end
 
   create_table "microposts", force: true do |t|
     t.string   "content"
